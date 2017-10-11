@@ -1,3 +1,6 @@
+const Vue = require('vue');
+console.log(Vue);
+
 const VComponent = Vue.component('hello-component', {
     data: () => {
         return {
