@@ -1,0 +1,29 @@
+{
+  "name": "vuetastic",
+  "version": "1.0.0",
+  "description": "This is a simple test to see if a vue component can be wrapped and exported as an angularjs component",
+  "main": "index.js",
+  "scripts": {
+    "test": "./jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hss-dev/vuetastic.git"
+  },
+  "keywords": [
+    "vuejs",
+    "angularjs"
+  ],
+  "author": "Mick Carter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hss-dev/vuetastic/issues"
+  },
+  "homepage": "https://github.com/hss-dev/vuetastic#readme",
+  "devDependencies": {
+    "angular": "^1.6.6",
+    "jest": "^21.2.1",
+    "ngVue": "^0.4.2",
+    "vue": "^2.4.4"
+  }
+}
