@@ -7,11 +7,6 @@ const VComponent = Vue.component('hello-component', {
     props: {
         start: String
     },
-    data: function() {
-        return {
-            hello: this.start
-        };
-    },
     computed: {
         value: function() {
             return this.start;
@@ -19,11 +14,7 @@ const VComponent = Vue.component('hello-component', {
     },
     methods: {
         bang: function() {
-            if (this.hello === 'Dan') {
-                this.hello = "ROB";
-            } else {
-                this.hello = "Dan";
-            }
+            console.log("Vue's been clicked");
         },
         updateValue: function(value) {
             console.log(value);

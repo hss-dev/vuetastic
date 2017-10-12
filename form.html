@@ -1,8 +1,37 @@
 <div>
     <div v-on:click="bang()">
         <h1>The Mighty Vue</h1>
-        <h1><h3> Tag prop: "{{start}}"</h3></h1>
+        <h1><h3 v-on:click="bang()"> Tag prop: "{{value}}"</h3></h1>
     <div>Send Event back to angular on change when field more than 3 characters...
         <input ref="input" v-bind:value="value" v-on:input="updateValue($event.target.value)">
     </div>
+<pre>const VComponent = Vue.component('hello-component', {
+props: {
+    start: String
+},
+computed: {
+    value: function() {
+        return this.start;
+    }
+},
+methods: {
+    bang: function() {
+        console.log("Vue's been clicked");
+    },
+    updateValue: function(value) {
+        console.log(value);
+        if (value.length > 3) {
+            console.log("SENDING event");
+            const args = {
+                detail: {
+                    hello: value
+                }
+            };
+            window.dispatchEvent(
+                new CustomEvent('valid', args));
+        }
+    }
+},
+template
+});</pre>
 </div>

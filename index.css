@@ -1,0 +1,36 @@
+
+#wrap{
+    width:100%;
+    margin:0 auto;
+}
+.angularbox{
+    float:left;
+    width:48%;
+    height:100%;
+    background:lightblue;
+    border:2px solid red;
+    margin:0 auto;
+    text-align: center;
+}
+
+.vuebox{
+    float:left;
+    width:48%;
+    height:100%;
+    background:lightgreen;
+    border:2px solid green;
+    margin:0 auto;
+    text-align: center;
+}
+
+
+pre {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 70;
+    text-align: left;
+    background:white;
+    text-color:green;
+}
+

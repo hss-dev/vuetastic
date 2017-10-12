@@ -14,6 +14,41 @@
                 <h1>The Abandoned AngularJS</h1> 
                 <h3> Angular scope variable <h1> "{{$ctrl.hello}}" </h1> passed to vue props </h3>
                 </br> Also listening to custom event which populate variable when over 5 characters
+                <pre>const helloCtrl = function($window, $scope) {
+    'ngInject';
+    this.hello = "FRED";
+    $window.addEventListener('valid', e => {
+        console.log("Got a valid event ");
+        console.log(e);
+        if (e.detail.hello.length > 5) {
+            $scope.$apply(() => 
+                $scope.$ctrl.hello = e.detail.hello);
+        } else {
+            console.log("But its less than 6");
+        }
+        console.log($scope);
+    });
+};
+helloCtrl.$inject = ['$window', '$scope'];
+
+(function(root, factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(['angular'], factory);
+    } else if (typeof module !== 'undefined'
+            && typeof module.exports === 'object') {
+        module.exports = factory(require('angular'));
+    } else {
+        return factory(root.angular);
+    }
+}(this, function(angular) {
+    'use strict';
+    var moduleName = 'vuetastic';
+    var mod = angular.module(moduleName, ['ngVue']);
+    mod.value('HelloComponent', VComponent);
+    mod.controller('helloCtrl', helloCtrl);
+    return moduleName; // the name of your module
+}));</pre>
             </div>
             <div class="vuebox">
                 <vue-component vprops-start="$ctrl.hello" name="HelloComponent" watch-depth="value"
