@@ -1,5 +1,3 @@
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-
 module.exports = {
     entry: ['./node_modules/ngVue/build/index.js',
         './index.js'
@@ -12,10 +10,17 @@ module.exports = {
             vue: 'vue/dist/vue.js'
         }
     },
-    plugins: [ 
-        new UglifyJSPlugin({
-            sourceMap: true
+    module: {
+        rules: [{
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['es2015']
+                }
+            }
+        }]
 
-        })
-    ]
+    }
 }
