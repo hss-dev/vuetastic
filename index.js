@@ -1,11 +1,21 @@
+import template from './form.html';
+
 const Vue = require('vue');
 console.log(Vue);
 
 const VComponent = Vue.component('hello-component', {
-    data: () => {
+    props: {
+        start: String
+    },
+    data: function() {
         return {
-            hello: "Dan"
+            hello: this.start
         };
+    },
+    computed: {
+        value: function() {
+            return this.start;
+        }
     },
     methods: {
         bang: function() {
@@ -17,15 +27,36 @@ const VComponent = Vue.component('hello-component', {
         },
         updateValue: function(value) {
             console.log(value);
+            if (value.length > 3) {
+                console.log("SENDING event");
+                const args = {
+                    detail: {
+                        hello: value
+                    }
+                };
+                window.dispatchEvent(new CustomEvent('valid', args));
+            }
         }
     },
-    template: `<div v-on:click="bang()"> VUE {{hello}} </div>
-        <div>INPUT:
-<input ref="input" v-bind:value="value" v-on:input="updateValue($event.target.value)">
-        </div> `
+    template
 });
-
 console.log("Vutastic in effect!");
+
+const helloCtrl = function($window, $scope) {
+    'ngInject';
+    this.hello = "FRED";
+    $window.addEventListener('valid', e => {
+        console.log("Got a valid event ");
+        console.log(e);
+        if (e.detail.hello.length > 5) {
+            $scope.$apply(() => $scope.$ctrl.hello = e.detail.hello);
+        } else {
+            console.log("But its less than 6");
+        }
+        console.log($scope);
+    });
+};
+helloCtrl.$inject = ['$window', '$scope'];
 
 // your library here
 (function(root, factory) {
@@ -49,5 +80,6 @@ console.log("Vutastic in effect!");
     var moduleName = 'vuetastic';
     var mod = angular.module(moduleName, ['ngVue']);
     mod.value('HelloComponent', VComponent);
+    mod.controller('helloCtrl', helloCtrl);
     return moduleName; // the name of your module
 }));

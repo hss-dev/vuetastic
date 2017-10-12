@@ -3,12 +3,23 @@
 <head>
     <script src="./node_modules/angular/angular.min.js"></script>
     <script src="./dist/vuetastic.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
-    <div ng-app="vuetastic">
-        <vue-component name="HelloComponent" watch-depth="value" /> 
-    </div>
+    <div ng-app="vuetastic" id="wrap">
+
+        <div ng-controller="helloCtrl as $ctrl">
+            <div class="angularbox">
+                <h1>The Abandoned AngularJS</h1> 
+                <h3> Angular scope variable <h1> "{{$ctrl.hello}}" </h1> passed to vue props </h3>
+                </br> Also listening to custom event which populate variable when over 5 characters
+            </div>
+            <div class="vuebox">
+                <vue-component vprops-start="$ctrl.hello" name="HelloComponent" watch-depth="value"
+                />
+            </div>
+        </div>
 </body>
 
 

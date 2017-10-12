@@ -1,6 +1,6 @@
 {
   "name": "vuetastic",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This is a simple test to see if a vue component can be wrapped and exported as an angularjs component",
   "main": "index.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
+    "html-loader": "^0.5.1",
     "jest": "^21.2.1",
     "ngVue": "^0.4.2",
     "uglify-es": "git+https://github.com/mishoo/UglifyJS2.git#harmony",

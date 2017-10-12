@@ -1,0 +1,8 @@
+<div>
+    <div v-on:click="bang()">
+        <h1>The Mighty Vue</h1>
+        <h1><h3> Tag prop: "{{start}}"</h3></h1>
+    <div>Send Event back to angular on change when field more than 3 characters...
+        <input ref="input" v-bind:value="value" v-on:input="updateValue($event.target.value)">
+    </div>
+</div>

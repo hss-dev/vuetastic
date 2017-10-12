@@ -20,6 +20,9 @@ module.exports = {
                     presets: ['es2015']
                 }
             }
+        }, {
+            test: /\.html$/,
+            use: ["html-loader?config=otherHtmlLoaderConfig"]
         }]
 
     }
